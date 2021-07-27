@@ -8,7 +8,7 @@ from .forms import *
 
 
 def index(request):
-    tasks = Task.objects.all() 
+    tasks = Task.objects.all()[::-1]
     form = TaskForm()
 
     if request.method == 'POST' :
@@ -33,7 +33,6 @@ def update_task(request , pk):
     if request.method == 'POST' :
         form = TaskForm(request.POST , instance=task)
         if form.is_valid() :
-            task.title += "  (updated)"
             form.save()
             return redirect('/')
 

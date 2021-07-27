@@ -9,29 +9,41 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <style>
+            a{
+                text-decoration-line: none;
+            }
+        </style>
+
     </head>
 
     <body>
         <form method="POST" action="/">
             {% csrf_token %}
             {{form.title}}
-            <input type="submit" name="Create Task" placeholder="submit" required>
+            <input type="submit" name="Create Task" placeholder="submit" value="Submit" required>
         </form>
 
-
-
-        {% for task in tasks %}
-            <div>
-                <a href="{% url 'updt' task.id %}">Update</a>
-                <a href="{% url 'd' task.id %}">Delete</a>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <a href="{% url 'updt' task.id %}">
+                    <button>Update</button>
+                </a>
+                <a href="{% url 'd' task.id %}">
+                    <button>Delete</button>
+                </a>
 
                 {% if task.complete == True %}
                     <strike>{{task}}</strike>
                 {% else %}
                     <span>{{task}}</span>
-                {% endif%}
-            </div>
-        {% endfor %}
+                {% endif %}
+            </li>
+            <br>
+            {% endfor %}
+        </ul>
+
     </body>
 
 </html>

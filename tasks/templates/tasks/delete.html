@@ -9,16 +9,26 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <style>
+            div{
+                margin-left: 40%;
+            }
+        </style>
+
     </head>
 
     <body>
-        <h3>Want To Delete "{{item}}" ?  </h3>
-        <a href="{% url 'list' %}">cancel</a>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input type="submit" name="confirm">  
-        </form>
-            }
+        <h4>Want To Delete "{{item}}" ?  </h4>
+        <div>
+            <a href="{% url 'list' %}">
+            <button>cancel</button>
+            </a>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <br>
+                <input type="submit" name="confirm" value="delete">  
+            </form>
+        </div>
     </body>
 
 </html>
